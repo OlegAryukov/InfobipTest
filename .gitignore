@@ -1,0 +1,8 @@
+# IntelliJ project files
+*/.idea
+*.iml
+*/.target
+out
+gen
+Будет удалено .gitignore
+Будет удалено .idea/
