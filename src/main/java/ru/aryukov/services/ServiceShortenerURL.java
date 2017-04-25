@@ -1,16 +1,13 @@
-package ru.aryukov;
+package ru.aryukov.services;
 
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.StringTokenizer;
 
 /**
  * Created by olega on 24.04.17.
  */
-public class ShotenerURL {
+public class ServiceShortenerURL {
 
     public String getShortURL(String longURL) throws UnsupportedEncodingException {
 
