@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by oaryukov on 23.04.2017.
  */
 
-@Controller
-@EnableAutoConfiguration
+@SpringBootApplication
 public class SampleController {
 
     @RequestMapping("/")
