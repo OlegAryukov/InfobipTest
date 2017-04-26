@@ -1,6 +1,6 @@
 package ru.aryukov.services;
 
-import ru.aryukov.User;
+import ru.aryukov.domain.Account;
 
 import java.util.Map;
 
@@ -8,21 +8,21 @@ import java.util.Map;
  * Created by oaryukov on 25.04.2017.
  */
 public class UserStatService {
-    private User user;
+    private Account account;
 
-    public UserStatService(User user){
-        this.user = user;
+    public UserStatService(Account account){
+        this.account = account;
     }
 
     public void changeStat(String longURL){
-        if(user.getStatistic().containsKey(longURL)){
-            user.getStatistic().replace(longURL, user.getStatistic().get(longURL) + 1);
+        if(account.getStatistic().containsKey(longURL)){
+            account.getStatistic().replace(longURL, account.getStatistic().get(longURL) + 1);
         }else {
-            user.getStatistic().put(longURL,1);
+            account.getStatistic().put(longURL,1);
         }
     }
     public Map<String, Integer> getSat(){
-        return user.getStatistic();
+        return account.getStatistic();
     }
 
 }

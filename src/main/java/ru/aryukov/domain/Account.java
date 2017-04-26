@@ -1,16 +1,17 @@
-package ru.aryukov;
+package ru.aryukov.domain;
 
 import java.util.HashMap;
 
 /**
  * Created by oaryukov on 25.04.2017.
  */
-public class User {
+public class Account {
     private String login;
     private String password;
     private HashMap<String, Integer> statistic = new HashMap<>();
 
-    public User(String login, String password){
+    public Account(){}
+    public Account(String login, String password){
         this.login = login;
         this.password = password;
     }

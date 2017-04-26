@@ -1,6 +1,6 @@
 package ru.aryukov.storage;
 
-import ru.aryukov.User;
+import ru.aryukov.domain.Account;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,9 +10,9 @@ import java.util.Map;
  */
 
 class UsersStorage {
-    private HashMap<String, User> storage = new HashMap<>();
+    private HashMap<String, Account> storage = new HashMap<>();
 
-    public Map<String, User> getStorage(){
+    public Map<String, Account> getStorage(){
         return this.storage;
     }
 }

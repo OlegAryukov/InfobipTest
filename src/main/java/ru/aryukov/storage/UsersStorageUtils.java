@@ -1,7 +1,6 @@
 package ru.aryukov.storage;
 
-import ru.aryukov.User;
-
+import ru.aryukov.domain.Account;
 
 
 /**
@@ -10,18 +9,16 @@ import ru.aryukov.User;
 public class UsersStorageUtils {
     private UsersStorage usersStorage = new UsersStorage();
 
-    public void addUser(User user){
-        if (!checkUser(user.getLogin())) {
-            usersStorage.getStorage().put(user.getLogin(), user);
-        }
+    public Account addUser(Account account){
+        return usersStorage.getStorage().put(account.getLogin(), account);
     }
 
-    public User getUser(String login){
-        User user = null;
+    public Account getUser(String login){
+        Account account = null;
         if(checkUser(login)){
-            user = usersStorage.getStorage().get(login);
+            account = usersStorage.getStorage().get(login);
         }
-        return user;
+        return account;
     }
 
     public boolean checkUser(String login){
