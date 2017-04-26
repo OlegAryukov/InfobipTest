@@ -2,7 +2,7 @@ package ru.aryukov.services;
 
 import ru.aryukov.User;
 
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by oaryukov on 25.04.2017.
@@ -21,7 +21,8 @@ public class UserStatService {
             user.getStatistic().put(longURL,1);
         }
     }
-    public HashMap<String, Integer> getSat(){
+    public Map<String, Integer> getSat(){
         return user.getStatistic();
     }
+
 }

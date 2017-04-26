@@ -21,17 +21,20 @@ public class StorageUrlUtils {
                 }
             }
             break;
-            //operationResult = true;
         }
         if (!operationResult){
-            urlStorage.getUrlStorage().put(shortURL,longURL);
+            urlStorage.getStorage().put(shortURL,longURL);
         }
         return resultShortURL;
     }
 
-    private boolean checkContains(String shortURL){
+    public String getLongURL(String shortURL){
+        return urlStorage.getStorage().get(shortURL);
+    }
+
+    public boolean checkContains(String shortURL){
         boolean result = false;
-        if(urlStorage.getUrlStorage().containsKey(shortURL)){
+        if(urlStorage.getStorage().containsKey(shortURL)){
             result = true;
         }
         return result;
@@ -39,7 +42,7 @@ public class StorageUrlUtils {
 
     private boolean checkLongURL(String shortURL, String longURL){
         boolean result = false;
-        if(urlStorage.getUrlStorage().get(shortURL).equals(longURL)){
+        if(urlStorage.getStorage().get(shortURL).equals(longURL)){
             result = true;
         }
         return result;
