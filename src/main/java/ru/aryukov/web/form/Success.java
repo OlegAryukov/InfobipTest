@@ -3,7 +3,7 @@ package ru.aryukov.web.form;
 /**
  * Created by olega on 26.04.17.
  */
-public class Success<T> extends Result {
+public class Success<T> implements Result {
     private final T value;
 
     public Success(T value) {

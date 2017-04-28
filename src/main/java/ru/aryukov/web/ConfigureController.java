@@ -1,9 +1,12 @@
 package ru.aryukov.web;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import ru.aryukov.domain.Account;
-import ru.aryukov.storage.UsersStorageUtils;
+import ru.aryukov.storage.AccountStorageUtilsImpl;
 import ru.aryukov.web.form.Error;
 import ru.aryukov.web.form.Result;
 import ru.aryukov.web.form.Success;
@@ -15,19 +18,18 @@ import ru.aryukov.web.form.Success;
 @RestController
 @RequestMapping(value = "/configure")
 public class ConfigureController {
-    private UsersStorageUtils usu = new UsersStorageUtils();
+    @Autowired
+    private AccountStorageUtilsImpl asu;
 
     @RequestMapping(value = "/account", method = RequestMethod.POST, produces = "application/json")
     public Result post(@RequestBody Account account){
         final Result result;
-        /*headers.setContentType(MediaType.APPLICATION_JSON);
-        ResponseEntity<String> response = null;*/
-        if(!usu.checkUser(account.getLogin())){
-            /*Account newAccount = new Account(account.getLogin(), "500NSczx");
-            usu.addUser(account);*/
-            result = new Success<Account>(this.usu.addUser(account));
+        if(!asu.checkUser(account.getLogin())){
+            Account newAccount = new Account(account.getLogin(), asu.genPassword());
+            this.asu.addUser(newAccount);
+            result = new Success<>(this.asu.getUser(account.getLogin()));
         } else {
-            result = new Error(String.format("User %s is already exist", usu.getUser(account.getLogin())));
+            result = new Error(String.format("User %s is already exist", asu.getUser(account.getLogin())));
         }
         return result;
     }
